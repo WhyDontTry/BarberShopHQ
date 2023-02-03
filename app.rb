@@ -12,8 +12,19 @@ end
 class Barber < ActiveRecord::Base
 end
 
+before do
+    @barbers = Barber.order "created_at DESC"
+end
+
 get '/' do
-    @barbers = Barber.all
 
     erb :index			
+end
+
+get '/visit' do
+    erb :visit
+end
+
+post '/visit' do
+
 end
