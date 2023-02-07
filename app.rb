@@ -44,3 +44,11 @@ post '/visit' do
     )
 
 end
+
+get '/contacts' do
+
+end
+
+post '/contacts' do
+
+end
