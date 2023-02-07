@@ -12,6 +12,9 @@ end
 class Barber < ActiveRecord::Base
 end
 
+class Contact < ActiveRecord::Base
+end
+
 before do
     @barbers = Barber.order "created_at DESC"
 end
@@ -26,5 +29,18 @@ get '/visit' do
 end
 
 post '/visit' do
+    @name       = params[:username]
+    @phone      = params[:phone]
+    @datestamp  = params[:datetime]
+    @barber     = params[:barber]
+    @color      = params[:color]
+
+    Client.create(
+        :name       => @name,
+        :phone      => @phone,
+        :datestamp  => @datestamp,
+        :barber     => @barber,
+        :color      => @color
+    )
 
 end
