@@ -50,5 +50,13 @@ get '/contacts' do
 end
 
 post '/contacts' do
+    @email = params[:email]
+    @message = params[:message]
 
+    Contact.create(
+        :email   => @email,
+        :message => @message
+    )
+
+    erb "<h2>Success!</h2>"
 end
