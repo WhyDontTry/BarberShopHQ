@@ -46,7 +46,7 @@ post '/visit' do
 end
 
 get '/contacts' do
-
+    erb :contacts
 end
 
 post '/contacts' do
