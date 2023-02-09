@@ -59,3 +59,7 @@ post '/contacts' do
 
     erb "<h2>Success!</h2>"
 end
+
+get '/barber/:id' do
+    erb :barber
+end
