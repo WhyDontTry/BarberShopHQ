@@ -17,6 +17,8 @@ class Barber < ActiveRecord::Base
 end
 
 class Contact < ActiveRecord::Base
+    validates :email, presence: true
+    validates :message, presence: true
 end
 
 before do
@@ -45,19 +47,20 @@ post '/visit' do
 end
 
 get '/contacts' do
+    @c = Contact.new
     erb :contacts
 end
 
 post '/contacts' do
-    @email = params[:email]
-    @message = params[:message]
+    @c = Contact.new params[:contact]
 
-    Contact.create(
-        :email   => @email,
-        :message => @message
-    )
+    if @c.save
+        erb "<h2>Success!</h2>"
+    else
+        @error = @c.errors.full_messages.first
+        erb :contacts
+    end
 
-    erb "<h2>Success!</h2>"
 end
 
 get '/barber/:id' do

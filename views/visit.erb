@@ -20,9 +20,9 @@
 
   <div class="form-group">
     <label> Выберите парикмахера: </label>
-    <select name="barber" class="form-control">
+    <select name="client[barber]" class="form-control">
       <% @barbers.each do |barber| %>
-      <option><%=barber[:name]%></option>
+        <option><%= barber[:name] %></option>
       <% end %> 
 
     </select>
